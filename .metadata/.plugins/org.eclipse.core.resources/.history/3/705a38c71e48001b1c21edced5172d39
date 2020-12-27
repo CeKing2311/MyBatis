@@ -1,0 +1,5 @@
+package com.ceking.mybatis;
+
+public class Employee {
+
+}
