@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.ceking.mybatis.dao.EmployeeMapperPlus">  	
+  <!-- resultMap:自定义结果集规则 -->
+  	<resultMap type="com.ceking.mybatis.entities.Employee" id="MyEmp">
+  		<id column="id" property="id"></id>
+  		<result column="last_name" property="lastName" />
+  		<!-- 其他不指定的列会自动封装，推荐都写上其他列 -->
+  		<result column="email" property="email" />
+  		<result column="gender" property="gender" />  		
+  	</resultMap>
+  	<select id="getEmpById" resultMap="" >
+  		select * from t_employee where id= #{id}
+  	</select>
+  </mapper>
+  
+  

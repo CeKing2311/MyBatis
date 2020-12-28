@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.ceking.mybatis.dao.EmployeeMapperPlus">  	
+  <!-- resultMap:自定义结果集规则 -->
+  	<resultMap type="com.ceking.mybatis.entities.Employee" id="MyEmp">
+  	<!-- 
+  		id:定义主键
+  		result:定义其他列
+  	 -->
+  		<id column="id" property="id"></id>
+  		<result column="last_name" property="lastName" />
+  		<!-- 其他不指定的列会自动封装，推荐都写上其他列 -->
+  		<result column="email" property="email" />
+  		<result column="gender" property="gender" />  		
+  	</resultMap>
+  	<select id="getEmpById" resultMap="MyEmp" >
+  		select * from t_employee where id= #{id}
+  	</select>
+  	<!-- 联合查询，级联属性封装对象 -->
+  	<resultMap type="com.ceking.mybatis.entities.Employee" id="MyEmpDep">
+  		<id column="id" property="id"></id>
+  		<result column="last_name" property="lastName" />
+  		<result column="gender" property="gender" />
+  		<result column="email" property="email" />  		
+  		<result column="did" property="dept.id" />
+  		<result column="departmentName" property="dept.departmentName" />
+  	</resultMap>
+  	<select id="getEmpAndDept" resultMap="MyEmpDep" >
+  		SELECT e.id,e.last_name,e.gender,e.email,e.d_id,d.id did,d.departmentName
+  		 FROM t_employee e,t_department d WHERE e.d_id = d.id AND e.id=#{id}
+  	</select>
+  	
+  	<resultMap type="com.ceking.mybatis.entities.Employee" id="MyEmpDep">
+  		<id column="id" property="id"></id>
+  		<result column="last_name" property="lastName" />
+  		<result column="gender" property="gender" />
+  		<result column="email" property="email" />  
+  		<association property="dept" javaType="com.ceking.mybatis.entities.Department" ></association>		
+  		<result column="did" property="dept.id" />
+  		<result column="departmentName" property="dept.departmentName" />
+  	</resultMap>
+  	<select id="getEmpAndDept" resultMap="MyEmpDep" >
+  		SELECT e.id,e.last_name,e.gender,e.email,e.d_id,d.id did,d.departmentName
+  		 FROM t_employee e,t_department d WHERE e.d_id = d.id AND e.id=#{id}
+  	</select>
+  	
+  </mapper>
+  
+  

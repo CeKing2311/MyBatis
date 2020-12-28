@@ -1,9 +1,9 @@
 jdbc.driver=com.mysql.jdbc.Driver
 jdbc.url=jdbc:mysql://localhost:3306/mybatis
 jdbc.username=root
-jdbc.password=Goldcommon13579
+jdbc.password=CeKing2311
 
 sqlserver.jdbc.driver=com.microsoft.sqlserver.jdbc.SQLServerDriver
 sqlserver.jdbc.url=jdbc:sqlserver://localhost:1433;databaseName=mybatis
-sqlserver.jdbc.username=mybatis
-sqlserver.jdbc.password=mybatis
+sqlserver.jdbc.username=sa
+sqlserver.jdbc.password=CeKing2311

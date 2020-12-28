@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- 1.properties 标签俩引入外部 properties配置文件的内容 resource:引入路径下的资源 url:引入网络路径或者磁盘路径下的资源 -->
+	<properties resource="dbconfig.propertities"></properties>
+
+	<!-- 2.全局设置 -->
+	<settings>
+		<!-- 是否开启驼峰命名自动映射，即从经典数据库列名 A_COLUMN 映射到经典 Java 属性名 aColumn -->
+		<setting name="mapUnderscoreToCamelCase" value="true" />
+		<!-- 全局配置，oracle即可支持字段为null -->
+		<setting name="jdbcTypeForNull" value="OTHER"/>
+	</settings>
+
+	<environments default="dev_mysql">
+		<environment id="dev_mysql">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">·
+				<property name="driver" value="${jdbc.driver}" />
+				<property name="url" value="${jdbc.url}" />
+				<property name="username" value="${jdbc.username}" />
+				<property name="password" value="${jdbc.password}" />
+			</dataSource>
+		</environment>
+		<environment id="dev_sqlserver">
+			<transactionManager type="JDBC"></transactionManager>
+			<dataSource type="POOLED">
+				<property name="driver" value="${sqlserver.jdbc.driver}" />
+				<property name="url" value="${sqlserver.jdbc.url}" />
+				<property name="username" value="${sqlserver.jdbc.username}" />
+				<property name="password" value="${sqlserver.jdbc.password}" />
+			</dataSource>
+		</environment>
+	</environments>
+	<!-- 5.databaseIdProvider 支持多数据库厂商 -->
+	<databaseIdProvider type="DB_VENDOR">
+		<property name="MySQL" value="mysql" />
+		<property name="SQL Server" value="sqlserver" />
+		<property name="Oracle" value="oracle" />
+	</databaseIdProvider>
+	<!-- 将写好的sql注册到全局配置文件中 -->
+	<mappers>
+		 <mapper resource="com/ceking/mybatis/dao/EmployeeMapper.xml" />
+		<mapper resource="com/ceking/mybatis/dao/EmployeeMapperPlus.xml" />
+	</mappers>
+</configuration>
