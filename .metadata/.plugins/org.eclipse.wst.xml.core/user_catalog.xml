@@ -1,2 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog"/>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+  <uri name="http://mybatis.org/dtd/mybatis-3-config.dtd" uri="file:///D:/JavaStudy/7.MyBatis/mybatis-3.5.5/mybatis-3-config.dtd"/>
+</catalog>

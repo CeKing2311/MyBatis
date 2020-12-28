@@ -1,0 +1,20 @@
+package com.ceking.mybatis.dao;
+
+import java.util.Map;
+
+import org.apache.ibatis.annotations.Param;
+
+import com.ceking.mybatis.entities.Employee;
+
+public interface EmoployeeDao {
+	
+	public Employee getEmpById(Integer id);	
+	public Employee getEmpByInfo(@Param("id") Integer id,@Param("lastName") String lastName);	
+	public Employee getEmpByMap(Map<String, Object> map);
+	
+	public void addEmp(Employee employee);
+		
+	public Boolean updateEmp(Employee employee);
+	
+	public Integer deleteEmpById(Integer id);
+}

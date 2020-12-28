@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;EmployeeMapper.xml&apos; to &apos;MyBatis03_mapper/conf/com.ceking.mybatis.dao&apos;&#x0D;&#x0A;- Original project: &apos;MyBatis03_mapper&apos;&#x0D;&#x0A;- Destination element: &apos;MyBatis03_mapper/conf/com.ceking.mybatis.dao&apos;&#x0D;&#x0A;- Original element: &apos;EmployeeMapper.xml&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move file" destination="/conf&lt;com.ceking.mybatis.dao" element1="conf/EmployeeMapper.xml" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1609138845900" units="0" version="1.0"/>
+</session>

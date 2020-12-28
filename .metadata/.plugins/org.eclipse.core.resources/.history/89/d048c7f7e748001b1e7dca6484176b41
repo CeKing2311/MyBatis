@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <!--  
+  1.namespace 指定接口的全类名
+  -->
+<mapper namespace="com.ceking.mybatis.dao.EmoployeeDao">
+  <select id="getEmpById" resultType="com.ceking.mybatis.entities.Employee" >
+    select id,last_name lastName,email,gender from t_employee where id = #{id}
+  </select>
+  
+  <select id="getEmpByInfo" resultType="com.ceking.mybatis.entities.Employee" >
+    select id,last_name lastName,email,gender from t_employee where id = #{id} and last_name=${lastName}
+  </select>
+  <!--
+  1. useGeneratedKeys 使用自增主键获取主键值策略
+  2. keyProperty 指定对应的主键属性，将这个值封装给javaBean属性
+   -->
+  <insert id="addEmp" useGeneratedKeys="true" keyProperty="id" >
+  	insert into t_employee (last_name,email,gender) values(#{lastName},#{email},#{gender})
+  </insert> 
+  <update id="updateEmp">
+  	update t_employee set last_name=#{lastName},email=#{email},gender=#{gender} where id= #{id}
+  </update>
+  <delete id="deleteEmpById">
+ 	 delete from t_employee where id = #{id}
+  </delete>
+ 
+</mapper>

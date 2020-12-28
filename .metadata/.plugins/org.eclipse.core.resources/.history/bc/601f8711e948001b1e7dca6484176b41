@@ -1,0 +1,18 @@
+package com.ceking.mybatis.dao;
+
+import org.apache.ibatis.annotations.Param;
+
+import com.ceking.mybatis.entities.Employee;
+
+public interface EmoployeeDao {
+	
+	public Employee getEmpById(Integer id);
+	
+	public Employee getEmpById(@Param("id") Integer id,@Param("lastName") String lastName);
+	
+	public void addEmp(Employee employee);
+		
+	public Boolean updateEmp(Employee employee);
+	
+	public Integer deleteEmpById(Integer id);
+}
