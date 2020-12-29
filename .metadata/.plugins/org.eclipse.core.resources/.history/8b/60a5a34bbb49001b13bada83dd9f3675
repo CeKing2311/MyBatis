@@ -1,0 +1,15 @@
+package com.ceking.mybatis.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class EmployeeController {
+	
+	
+	
+	@RequestMapping("/getemps")
+	public String getEmps() {
+		return "list";
+	}
+}

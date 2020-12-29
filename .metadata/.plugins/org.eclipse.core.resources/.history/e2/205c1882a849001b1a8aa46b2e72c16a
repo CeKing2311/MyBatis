@@ -1,0 +1,47 @@
+package com.ceking.mybatis.test;
+
+import java.io.InputStream;
+
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.Configuration;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.junit.Test;
+
+import com.ceking.mybatis.dao.EmployeeMapper;
+import com.ceking.mybatis.entities.Employee;
+
+public class MyBatisCacheTest {
+
+	public SqlSessionFactory getSqlSessionFactory() throws Exception {
+		String resource = "mybatis-config.xml";
+		InputStream inputStream = Resources.getResourceAsStream(resource);
+		SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+		return sqlSessionFactory;
+	}
+	/**
+	 * mybatis两级缓存
+	 * 一级缓存：本地缓存
+	 * 		与数据库同一次会话期间查询到的数据会放在本地缓存中
+	 * 二级缓存：全局缓存
+	 * @throws Exception 
+	 */
+	@Test
+	public void testFirstCache() throws Exception {
+		SqlSessionFactory sessionFactory = getSqlSessionFactory();
+		SqlSession openSession = sessionFactory.openSession();
+		try {
+			
+			EmployeeMapper mapper = openSession.getMapper(EmployeeMapper.class);
+			Employee employee = mapper.getEmpById(2);			
+			System.out.println(employee);
+			System.out.println(mapper.getEmpById(3));
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			openSession.close();
+		}		
+	}
+}

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="MyBatis06_SSM">
+        <property name="context-root" value="MyBatis06_SSM"/>
+        <property name="java-output-path" value="/MyBatis06_SSM/build/classes"/>
+    </wb-module>
+</project-modules>

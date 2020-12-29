@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 测试动态sql -->
+<mapper namespace="com.ceking.mybatis.dao.EmployeeMapperDynamicSQL">
+
+	<!-- 1.查询员工 -->
+	<select id="getEmpByConditionIf" resultType="com.ceking.mybatis.entities.Employee">
+		select * from t_employee
+		<!--1. where 1=1 -->
+		<!--2.where标签可以去掉第一个标签 -->
+		<where>
+			<if test="id!=null">
+				id=#{id}
+			</if>
+			<if test="lastName!=null and lastName!=&quot;&quot;">
+				and last_name like #{lastName}
+			</if>
+			<if test="email!=null and email.trim()!=''">
+				and email =#{email}
+			</if>
+			<if test="gender ==0 or gender==1">
+				and gender =#{gender}
+			</if>
+		</where>
+		<!-- OGNL表达式 -->
+	</select>
+
+	<select id="getEmpByConditionTrim" resultType="com.ceking.mybatis.entities.Employee">
+		select * from t_employee
+		<!-- 自定义字符串的截取规则 prefix:前缀：给整个字符串加一个前缀 prefixOverrides：前缀覆盖 ，去掉整个字符串前面多余的字符 
+			suffix:后缀，给整个字符串加一个后缀 suffixOverrides：后缀覆盖,去掉整个字符串后面多余的字符 -->
+		<trim prefix="where" prefixOverrides="" suffix=""
+			suffixOverrides="and">
+			<if test="id!=null">
+				id=#{id} and
+			</if>
+			<if test="lastName!=null and lastName!=&quot;&quot;">
+				last_name like #{lastName} and
+			</if>
+			<if test="email!=null and email.trim()!=''">
+				email =#{email} and
+			</if>
+			<if test="gender ==0 or gender==1">
+				gender =#{gender} and
+			</if>
+		</trim>
+		<!-- OGNL表达式 -->
+	</select>
+	
+	<select id="getEmpByConditionChoose" resultType="com.ceking.mybatis.entities.Employee">
+		select * from t_employee
+		<where>
+			<choose>
+				<when test="id!=null">
+					id= #{id}
+				</when>
+				<when test="lastName!=null">
+					last_name like #{lastName}
+				</when>
+				<when test="email!=null">
+					email =#{email}
+				</when>
+				<otherwise>
+					gender = #{gender}
+				</otherwise>
+			</choose>
+		</where>
+	</select>
+	<!-- -->
+	<update id="updateEmpDynamic">
+		<!-- update t_employee <set> <if test="lastName!=null"> last_name=#{lastName}, 
+			</if> <if test="email!=null"> email=#{email}, </if> <if test="gender!=null"> 
+			gender=#{gender} </if> </set> where id = #{id} -->
+
+		update t_employee
+		<trim prefix="set" suffixOverrides="">
+			<if test="lastName!=null">
+				last_name=#{lastName},
+			</if>
+			<if test="email!=null">
+				email=#{email},
+			</if>
+			<if test="gender!=null">
+				gender=#{gender}
+			</if>
+		</trim>
+		where id = #{id}
+	</update>
+	
+	<select id="getEmpsByConditionForeach" resultType="com.ceking.mybatis.entities.Employee" >
+		select * from  t_employee  
+		<foreach collection="ids" item="item_id" separator=","  open="where id in (" close=")">
+			#{item_id}
+		</foreach>		
+	</select>
+	<!-- 批量保存 -->
+	<insert id="addEmps">
+		<!-- insert into t_employee (last_name,email,gender,d_id) 
+		values
+		<foreach collection="emps" item="emp" separator=",">
+			(#{emp.lastName},#{emp.email},#{emp.gender},#{emp.dept.id})			
+		</foreach> -->
+		<!-- 需要数据库连接属性allowMultiQueries支持， jdbc:mysql://localhost:3306/mybatis?allowMultiQueries=true -->
+		<foreach collection="emps" item="emp" separator=";">
+			insert into t_employee (last_name,email,gender,d_id) values 
+			(#{emp.lastName},#{emp.email},#{emp.gender},#{emp.dept.id})		
+		</foreach>		
+	</insert>
+	<!-- sql抽取可重复利用的字段 -->		
+	<sql id="insertColumn">
+		last_name,email,gender,d_id
+	</sql>
+	
+</mapper>

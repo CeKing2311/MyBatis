@@ -1,0 +1,17 @@
+package com.ceking.mybatis.dao;
+
+import java.util.List;
+import java.util.Map;
+
+import org.apache.ibatis.annotations.MapKey;
+import org.apache.ibatis.annotations.Param;
+
+import com.ceking.mybatis.entities.Employee;
+
+public interface EmployeeMapper {
+	
+	public Employee getEmpById(@Param("id") Integer id);	
+	public void addEmp(Employee employee);		
+	public Boolean updateEmp(Employee employee);	
+	public Integer deleteEmpById(Integer id);
+}

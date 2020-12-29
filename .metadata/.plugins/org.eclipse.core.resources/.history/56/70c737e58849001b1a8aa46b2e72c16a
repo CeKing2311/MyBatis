@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 测试动态sql -->
+<mapper namespace="com.ceking.mybatis.dao.EmployeeMapperDynamicSQL">
+
+	<!-- 1.查询员工 -->
+	<select id="getEmpByConditionIf" resultType="com.ceking.mybatis.entities.Employee">
+		select * from t_employee
+		<!--1. where 1=1 -->		
+		<!--2.where标签可以去掉第一个标签 -->
+		<where>	
+			<if test="id!=null">
+				id=#{id}
+			</if>
+			<if test="lastName!=null and lastName!=&quot;&quot;">
+				and last_name like #{lastName}
+			</if>
+			<if test="email!=null and email.trim()!=''">
+				and email =#{email}
+			</if>
+			<if test="gender ==0 or gender==1">
+				and gender =#{gender}
+			</if>
+		</where>		
+		<!-- OGNL表达式 -->
+	</select>
+	
+	<select id="getEmpByConditionTrim" resultType="com.ceking.mybatis.entities.Employee">
+		select * from t_employee
+		<!--
+			自定义字符串的截取规则
+			  prefix:前缀：给整个字符串加一个前缀
+			  prefixOverrides：前缀覆盖 ，去掉整个字符串前面多余的字符
+			  suffix:后缀，给整个字符串加一个后缀
+			  suffixOverrides：后缀覆盖,去掉整个字符串后面多余的字符
+		-->
+		<trim prefix="where" prefixOverrides="" suffix="" suffixOverrides="and">	
+			<if test="id!=null">
+				id=#{id} and
+			</if>
+			<if test="lastName!=null and lastName!=&quot;&quot;">
+				last_name like #{lastName} and 
+			</if>
+			<if test="email!=null and email.trim()!=''">
+				email =#{email} and
+			</if>
+			<if test="gender ==0 or gender==1">
+				gender =#{gender} and
+			</if>
+		</trim>		
+		<!-- OGNL表达式 -->
+	</select>
+	
+	<select id="getEmpByConditionChoose" resultType="com.ceking.mybatis.entities.Employee">
+		slect * from t_employee
+		<where>
+			
+			
+		</where> 
+	</select>
+	
+	
+</mapper>

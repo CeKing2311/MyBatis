@@ -1,0 +1,12 @@
+package com.ceking.mybatis.dao;
+
+import java.util.List;
+
+import com.ceking.mybatis.entities.Employee;
+
+public interface EmployeeMapperDynamicSQL {
+	
+	public List<Employee> getEmpByConditionIf(Employee employee);
+	
+	public List<Employee> getEmpByConditionTrim(Employee employee);
+}
