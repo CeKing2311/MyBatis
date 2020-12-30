@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;com.ceking.mybatis.dao.EmoployeeDao&apos; to &apos;EmployeeMapper&apos;&#x0D;&#x0A;- Original project: &apos;MyBatis04_DynamicSQL&apos;&#x0D;&#x0A;- Original element: &apos;com.ceking.mybatis.dao.EmoployeeDao&apos;&#x0D;&#x0A;- Renamed element: &apos;com.ceking.mybatis.dao.EmployeeMapper&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;EmoployeeDao&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;com.ceking.mybatis.dao{EmoployeeDao.java[EmoployeeDao" matchStrategy="1" name="EmployeeMapper" qualified="false" references="true" similarDeclarations="false" stamp="1609319401807" textual="false" version="1.0"/>
+</session>

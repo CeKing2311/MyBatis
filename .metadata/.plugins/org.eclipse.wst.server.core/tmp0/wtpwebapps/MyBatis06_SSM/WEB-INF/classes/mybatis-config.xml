@@ -8,7 +8,7 @@
 		<!-- 是否开启驼峰命名自动映射，即从经典数据库列名 A_COLUMN 映射到经典 Java 属性名 aColumn -->
 		<setting name="mapUnderscoreToCamelCase" value="true" />
 		<!-- 全局配置，oracle即可支持字段为null -->
-		<setting name="jdbcTypeForNull" value="OTHER"/>	
+		<setting name="jdbcTypeForNull" value="NULL"/>	
 		<!-- 开启懒加载 (按需加载查询)-->	
 		<setting name="lazyLoadingEnabled" value="true"/>
 		<setting name="aggressiveLazyLoading" value="false"/>		
@@ -21,8 +21,4 @@
 		<property name="SQL Server" value="sqlserver" />
 		<property name="Oracle" value="oracle" />
 	</databaseIdProvider>
-	<!-- 将写好的sql注册到全局配置文件中 -->
-	<!-- <mappers>
-		<package name="com.ceking.mybatis.dao"/> 
-	</mappers> -->
 </configuration>

@@ -19,7 +19,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.Test;
 
 import com.ceking.mybatis.dao.DepartmentMapper;
-import com.ceking.mybatis.dao.EmoployeeDao;
+import com.ceking.mybatis.dao.EmployeeMapper;
 import com.ceking.mybatis.dao.EmployeeMapperDynamicSQL;
 import com.ceking.mybatis.dao.EmployeeMapperPlus;
 import com.ceking.mybatis.entities.Department;
@@ -39,7 +39,7 @@ public class MyBatisTest {
 		SqlSession openSession = sqlSessionFactory.openSession(true);
 		try {
 			EmployeeMapperDynamicSQL mapper = openSession.getMapper(EmployeeMapperDynamicSQL.class);
-			Employee employee = new Employee(12, "Jack", "Jack@qq.com", "1");
+			Employee employee = new Employee(null, "Jack1111", "Jack111@qq.com", "1");
 			// 测试if 和where
 			// List<Employee> list = mapper.getEmpByConditionIf(employee);
 			// 测试trim
@@ -62,6 +62,7 @@ public class MyBatisTest {
 				Employee emp =new Employee(null,"batch3emp"+i, "batch3emp"+i+"@qq.com","0",new Department(4, ""));
 				list.add(emp);
 			}
+			
 			System.out.println(System.currentTimeMillis());
 			mapper.addEmps(list);			
 			//openSession.commit();
@@ -154,7 +155,7 @@ public class MyBatisTest {
 		SqlSession openSession = sqlSessionFactory.openSession();
 		System.out.println(openSession);
 		try {
-			EmoployeeDao mapper = openSession.getMapper(EmoployeeDao.class);
+			EmployeeMapper mapper = openSession.getMapper(EmployeeMapper.class);
 			Employee employee = mapper.getEmpById(1);
 			System.out.println(employee);
 		} catch (Exception e) {
@@ -177,8 +178,8 @@ public class MyBatisTest {
 		// sqlSessionFactory.openSession(true);设置为true即可自动提交
 		SqlSession openSession = sqlSessionFactory.openSession();
 		try {
-			EmoployeeDao mapper = openSession.getMapper(EmoployeeDao.class);
-			Employee employee = new Employee(2, "Jim", "Jim@qq.com", "0");
+			EmployeeMapper mapper = openSession.getMapper(EmployeeMapper.class);
+			Employee employee = new Employee(null, "Jim111111", "Jim11111@qq.com", "0");
 			// 添加员工
 			mapper.addEmp(employee);
 			System.out.println(employee.getId());
@@ -190,6 +191,8 @@ public class MyBatisTest {
 
 			// 2.手动提交数据
 			openSession.commit();
+		}catch (Exception e) {
+			e.printStackTrace();
 		} finally {
 			openSession.close();
 		}
@@ -201,9 +204,10 @@ public class MyBatisTest {
 		//自动提交
 		SqlSession openSession = sqlSessionFactory.openSession(true);
 		try {
-			EmoployeeDao mapper = openSession.getMapper(EmoployeeDao.class);
-			// Employee employee = mapper.getEmpByInfo(2, "jim");
-
+			EmployeeMapper mapper = openSession.getMapper(EmployeeMapper.class);
+			
+			 //Employee employee = mapper.getEmpByInfo(2, "jim");
+			 //mapper.addEmp(employee);
 			// Map<String, Object> map = new HashMap<String, Object>();
 			// map.put("id", 2);
 			// map.put("lastName", "jim");
@@ -214,8 +218,8 @@ public class MyBatisTest {
 			// 返回Map
 			// Map<String, Object> map = mapper.getEmpMapById(2);
 
-			Map<Integer, Employee> maps = mapper.getEmpsMapByName("%mar%");
-			System.out.println(maps);
+			//Map<Integer, Employee> maps = mapper.getEmpsMapByName("%mar%");
+			//System.out.println(maps);
 
 		} finally {
 			openSession.close();

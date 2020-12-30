@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="MyBatisTest.testMybatis3" project="MyBatis07_MBG" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testcase name="testMybatis3" classname="com.ceking.mybatis.test.MyBatisTest" time="0.692"/>
+</testrun>

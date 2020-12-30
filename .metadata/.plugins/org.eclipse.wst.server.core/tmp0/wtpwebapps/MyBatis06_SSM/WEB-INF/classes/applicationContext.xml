@@ -14,7 +14,7 @@
 			expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
 	<!-- 引入数据库的配置文件 -->
-	<context:property-placeholder location="classpath:dbconfig.properties" />
+	<context:property-placeholder location="classpath:dbconfig.propertities" />
 	<!-- Spring用来控制业务逻辑。数据源、事务控制、aop -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 		<property name="jdbcUrl" value="${jdbc.url}"></property>
