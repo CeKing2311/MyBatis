@@ -1,0 +1,42 @@
+package com.ceking.mybatis.dao;
+
+import java.util.List;
+
+import com.ceking.mybatis.entities.Employee;
+/**
+ * 封装分页查询数据
+ * @author cjq
+ *
+ */
+public class Page {
+	private int start;
+	private int end;
+	private int total;	
+	private List<Employee> emps;
+	public int getStart() {
+		return start;
+	}
+	public void setStart(int start) {
+		this.start = start;
+	}
+	public int getEnd() {
+		return end;
+	}
+	public void setEnd(int end) {
+		this.end = end;
+	}
+	public int getTotal() {
+		return total;
+	}
+	public void setTotal(int total) {
+		this.total = total;
+	}
+	public List<Employee> getEmps() {
+		return emps;
+	}
+	public void setEmps(List<Employee> emps) {
+		this.emps = emps;
+	}
+	
+	
+}

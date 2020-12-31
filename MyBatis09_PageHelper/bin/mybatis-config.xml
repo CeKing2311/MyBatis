@@ -3,11 +3,20 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+
+	<typeHandlers>
+		<!-- 默认保存枚举的索引 -->
+		<!-- 1.配置自定义的TypeHandler -->
+		<typeHandler handler="com.ceking.mybatis.typehandler.MyEmpStatsusTypeHandler" javaType="com.ceking.mybatis.entities.EmpStatus" />
+		
+	</typeHandlers>
+	
 	<!-- 注册分页插件 -->
 	<plugins>
 		<plugin interceptor="com.github.pagehelper.PageInterceptor">
 		</plugin>
 	</plugins>
+	
 	<environments default="development">
 		<environment id="development">
 			<transactionManager type="JDBC" />

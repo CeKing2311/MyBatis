@@ -1,0 +1,49 @@
+package com.ceking.mybatis.typehandler;
+
+import java.sql.CallableStatement;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import org.apache.ibatis.type.JdbcType;
+import org.apache.ibatis.type.TypeHandler;
+
+import com.ceking.mybatis.entities.EmpStatus;
+
+/**
+ * 自定义枚举类型处理器
+ * 1.实现接口TypeHandler 或者继承 BaseTypeHandler
+ * @author cjq
+ *
+ */
+public class MyEmpStatsusTypeHandler implements TypeHandler<EmpStatus> {
+
+	/**
+	 * 定义当前数据如何保存到数据库
+	 */
+	@Override
+	public void setParameter(PreparedStatement ps, int i, EmpStatus parameter, JdbcType jdbcType) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public EmpStatus getResult(ResultSet rs, String columnName) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public EmpStatus getResult(ResultSet rs, int columnIndex) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public EmpStatus getResult(CallableStatement cs, int columnIndex) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+}

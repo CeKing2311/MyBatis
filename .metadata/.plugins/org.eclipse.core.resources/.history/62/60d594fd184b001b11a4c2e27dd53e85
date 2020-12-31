@@ -1,0 +1,5 @@
+package com.ceking.mybatis.entities;
+
+public enum EmpEnum {
+	
+}

@@ -7,7 +7,25 @@ public class Employee {
 	private String email;
 	private String gender;
 	private Integer d_id;
+	private EmpStatus empStatus=EmpStatus.LOGOUT;	
 	
+	public Employee(String lastName, String email, String gender, Integer d_id, EmpStatus empStatus) {
+		super();
+		this.lastName = lastName;
+		this.email = email;
+		this.gender = gender;
+		this.d_id = d_id;
+		this.empStatus = empStatus;
+	}
+
+	public EmpStatus getEmpStatus() {
+		return empStatus;
+	}
+
+	public void setEmpStatus(EmpStatus empStatus) {
+		this.empStatus = empStatus;
+	}
+
 	public Employee() {
 		super();
 	}

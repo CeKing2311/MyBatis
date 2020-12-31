@@ -11,9 +11,18 @@ public class Employee implements Serializable {
 	private String email;
 	private String gender;
 	private Department dept;
+	private Integer d_id;
 	
 	
 	
+	public Integer getD_id() {
+		return d_id;
+	}
+
+	public void setD_id(Integer d_id) {
+		this.d_id = d_id;
+	}
+
 	public Department getDept() {
 		return dept;
 	}
@@ -33,9 +42,15 @@ public class Employee implements Serializable {
 		this.email = email;
 		this.gender = gender;
 	}
+		
+	public Employee(String lastName, String email, String gender, Integer d_id) {
+		super();
+		this.lastName = lastName;
+		this.email = email;
+		this.gender = gender;
+		this.d_id = d_id;
+	}
 
-	
-	
 	public Employee(Integer id, String lastName, String email, String gender, Department dept) {
 		super();
 		this.id = id;

@@ -1,0 +1,6 @@
+package com.ceking.mybatis.dao;
+
+public class Page {
+	
+	
+}

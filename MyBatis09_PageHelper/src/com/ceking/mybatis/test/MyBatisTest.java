@@ -14,6 +14,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.Test;
 
 import com.ceking.mybatis.dao.EmoployeeDao;
+import com.ceking.mybatis.entities.EmpStatus;
 import com.ceking.mybatis.entities.Employee;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
@@ -28,19 +29,52 @@ public class MyBatisTest {
 		return sqlSessionFactory;
 	}
 	/**
+	 * 测试Enum
+	 * @throws Exception 
+	 */
+	
+	public void testEnumUse() {
+		EmpStatus login = EmpStatus.LOGIN;
+		System.out.println("枚举的索引："+login.ordinal());
+		System.out.println("枚举的名字："+login.name());
+		System.out.println("枚举的状态码："+login.getCode());
+		System.out.println("枚举的消息："+login.getMsg());
+		
+	}
+	
+	@Test
+	public void  tetsEnum() throws Exception {
+		SqlSessionFactory sqlSessionFactory = getSqlSessionFactory();
+		SqlSession openSession = sqlSessionFactory.openSession();
+		try {
+			EmoployeeDao mapper = openSession.getMapper(EmoployeeDao.class);
+			Employee employee =new Employee("enum_test2", "enum_test2@qq.com", "1", 1);
+			mapper.addEmp(employee);
+			System.out.println("保存成功！");
+			openSession.commit();
+			System.out.println(employee.getId());
+		}catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			openSession.close();
+		}
+	}
+	/**
 	 * 测试批量执行
 	 * @throws Exception
 	 */
 	@Test
 	public void testBatch() throws Exception {
 		SqlSessionFactory sqlSessionFactory = getSqlSessionFactory();
-		//ExecutorType.BATCH
+		//ExecutorType.BATCH 执行批量操作
 		SqlSession sqlSession = sqlSessionFactory.openSession(ExecutorType.BATCH);
 		long start = System.currentTimeMillis();
 		
 		try {
 			EmoployeeDao mapper = sqlSession.getMapper(EmoployeeDao.class);					
 			//mapper.addEmp(new Employee("hhhhhh", "hhhhh@qq.com", "1", 1));
+			
+			//批量保存操作			
 			for (int i = 0; i < 10000; i++) {
 				mapper.addEmp(new Employee(UUID.randomUUID().toString().substring(0, 5), "batch"+i+"@qq.com","0", 1));
 			}
@@ -70,7 +104,7 @@ public class MyBatisTest {
 			List<Employee> list = mapper.getEmps();
 			for (Employee employee2 : list) {
 				System.out.println(employee2);
-			}	
+			}
 			PageInfo<Object> pageInfo = new PageInfo<>();			
 			System.out.println("当前页码："+page.getPageNum());
 			System.out.println("总记录数："+page.getTotal());

@@ -23,4 +23,9 @@ public class EmployeeController {
 		map.put("emps", emps);
 		return "list";
 	}
+	@RequestMapping("/addEmps")
+	public String addEmps(){		
+		employeeService.addList();
+		return "redirect:index.jsp";
+	}
 }

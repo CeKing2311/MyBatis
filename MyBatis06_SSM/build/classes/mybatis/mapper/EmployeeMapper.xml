@@ -12,4 +12,7 @@
 	<select id="getEmps" resultType="com.ceking.mybatis.entities.Employee">
 		select * from t_employee
 	</select>
+	 <insert id="addEmp">
+  		insert into t_employee(last_name,email,gender,d_id) values(#{lastName},#{email},#{gender},#{d_id})
+  </insert>
 </mapper>

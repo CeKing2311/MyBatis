@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="getemps">查询所有员工</a>
+	<a href="getemps">查询所有员工</a><br><br>	
+	<a href="addEmps">插入一万条员工记录</a>
 </body>
 </html>

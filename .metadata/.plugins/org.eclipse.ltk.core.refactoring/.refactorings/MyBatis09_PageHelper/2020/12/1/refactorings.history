@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;com.ceking.mybatis.entities.EmpEnum&apos; to &apos;EmpStatus&apos;&#x0D;&#x0A;- Original project: &apos;MyBatis09_PageHelper&apos;&#x0D;&#x0A;- Original element: &apos;com.ceking.mybatis.entities.EmpEnum&apos;&#x0D;&#x0A;- Renamed element: &apos;com.ceking.mybatis.entities.EmpStatus&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;EmpEnum&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;com.ceking.mybatis.entities{EmpEnum.java[EmpEnum" matchStrategy="1" name="EmpStatus" qualified="false" references="true" similarDeclarations="false" stamp="1609385627095" textual="false" version="1.0"/>
+</session>

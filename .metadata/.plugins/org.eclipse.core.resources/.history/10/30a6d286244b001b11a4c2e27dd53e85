@@ -1,0 +1,11 @@
+package com.ceking.mybatis.typehandler;
+
+/**
+ * 自定义枚举类型处理器
+ * @author cjq
+ *
+ */
+public class MyEmpStatsusTypeHandler {
+	
+	
+}

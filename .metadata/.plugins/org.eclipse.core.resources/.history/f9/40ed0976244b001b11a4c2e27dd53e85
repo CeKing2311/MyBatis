@@ -1,0 +1,6 @@
+package com.ceking.mybatis.typehandler;
+
+public class MyEmpStatsusTypeHandler {
+	
+	
+}

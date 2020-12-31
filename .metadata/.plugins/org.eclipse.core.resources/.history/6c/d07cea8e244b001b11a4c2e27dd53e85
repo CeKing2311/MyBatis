@@ -1,0 +1,12 @@
+package com.ceking.mybatis.typehandler;
+
+/**
+ * 自定义枚举类型处理器
+ * 1.实现接口TypeHandler 或者继承 BaseTypeHandler
+ * @author cjq
+ *
+ */
+public class MyEmpStatsusTypeHandler {
+	
+	
+}

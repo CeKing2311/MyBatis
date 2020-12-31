@@ -1,0 +1,18 @@
+package com.ceking.mybatis.entities;
+
+/**
+ * 数据库保存的是状态码
+ * @author cjq
+ *
+ */
+public enum EmpStatus {
+	LOGOUT(100, "用户登录"), LOGIN(200, "用户登出"), REMOVE(300, "用户不存在");
+	private Integer code;
+	private String msg;
+	
+	private EmpStatus(Integer code, String msg) {
+		this.code = code;
+		this.msg = msg;
+	}
+
+}

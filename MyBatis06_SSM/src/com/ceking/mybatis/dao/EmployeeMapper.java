@@ -16,4 +16,5 @@ public interface EmployeeMapper {
 	public Integer deleteEmpById(Integer id);*/
 	public List<Employee> getEmps();
 	
+	public Long addEmp(Employee employee);
 }

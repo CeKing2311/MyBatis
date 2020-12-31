@@ -17,11 +17,12 @@
 	<context:property-placeholder location="classpath:dbconfig.propertities" />
 	<!-- Spring用来控制业务逻辑。数据源、事务控制、aop -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-		<property name="jdbcUrl" value="${jdbc.url}"></property>
-		<property name="driverClass" value="${jdbc.driver}"></property>
-		<property name="user" value="${jdbc.username}"></property>
-		<property name="password" value="${jdbc.password}"></property>
+		<property name="jdbcUrl" value="${sqlserver.jdbc.url}"></property>
+		<property name="driverClass" value="${sqlserver.jdbc.driver}"></property>
+		<property name="user" value="${sqlserver.jdbc.username}"></property>
+		<property name="password" value="${sqlserver.jdbc.password}"></property>
 	</bean>
+	
 	<!-- spring事务管理 -->
 	<bean id="dataSourceTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource"></property>
@@ -46,7 +47,7 @@
 	</bean>
 	
 	<!--配置一个可以进行批量执行的sqlSession  -->
-	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" scope="prototype">
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactoryBean"></constructor-arg>
 		<constructor-arg name="executorType" value="BATCH"></constructor-arg>
 	</bean>
